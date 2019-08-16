@@ -1,14 +1,21 @@
 package com.lambda.shoppinglist
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
-    internal var shoppingList: ArrayList<ShoppingItem> = ArrayList()
-    private val adapter = ShoppingListAdapter(shoppingList)
+    internal var shoppingItems: ArrayList<ShoppingItem> = ArrayList()
+    companion object{
+        var shoppingList: ArrayList<String> = ArrayList()
+        const val NOTIFICATION_ID = 22
+    }
+
+    private val adapter = ShoppingListAdapter(shoppingItems)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,9 +27,21 @@ class MainActivity : AppCompatActivity() {
         shoppingListLayout.adapter = adapter
 
         for (i in 0 until ShoppingItemConstants.ICON_IDS.size) {
-            shoppingList.add(ShoppingItem(ShoppingItemConstants.ITEM_NAMES_RAW[i], ShoppingItemConstants.ICON_IDS[i], 1))
+            shoppingItems.add(ShoppingItem(ShoppingItemConstants.ITEM_NAMES_RAW[i], ShoppingItemConstants.ICON_IDS[i], 1))
 
         }
         adapter.notifyDataSetChanged()
+
+        button_send_list.setOnClickListener {
+            NotificationGenerator.orderNotification(this)
+
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT,"Please add this order for me $shoppingList")
+                type = "text/plain"
+            }
+            startActivity(sendIntent)
+
+        }
     }
 }
