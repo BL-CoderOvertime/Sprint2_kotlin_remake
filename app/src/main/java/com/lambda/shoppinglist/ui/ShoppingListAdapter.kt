@@ -1,4 +1,4 @@
-package com.lambda.shoppinglist
+package com.lambda.shoppinglist.ui
 
 
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.lambda.shoppinglist.R
+import com.lambda.shoppinglist.model.ShoppingItem
 import kotlinx.android.synthetic.main.shopping_item_layout.view.*
 import java.util.ArrayList
 
@@ -40,11 +42,15 @@ class ShoppingListAdapter (val data: ArrayList<ShoppingItem>) :
             if (it.tag != "on") {
 
                 it.tag = "on"
-                holder.itemView.setBackgroundColor(ContextCompat.getColor(it.context, R.color.colorGreen))
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(it.context,
+                    R.color.colorPrimaryLight
+                ))
                 MainActivity.shoppingList.add(holder.itemName.text.toString())
             } else if (it.tag != "off") {
                 it.tag = "off"
-                holder.itemView.setBackgroundColor(ContextCompat.getColor(it.context, R.color.colorWhite))
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(it.context,
+                    R.color.colorWhite
+                ))
                 if( MainActivity.shoppingList.contains(holder.itemName.text.toString()))
                     MainActivity.shoppingList.remove(holder.itemName.text.toString())
             }

@@ -1,4 +1,4 @@
-package com.lambda.shoppinglist
+package com.lambda.shoppinglist.model
 
 class ShoppingItem(itemName:String,itemImageID:Int,itemIndex:Int){
     val itemName:String=itemName

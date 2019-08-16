@@ -1,13 +1,12 @@
-package com.lambda.shoppinglist
+package com.lambda.shoppinglist.utils
 
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.lambda.shoppinglist.MainActivity
+import com.lambda.shoppinglist.ui.MainActivity
 
 object NotificationGenerator {
     fun orderNotification(context: Context) {
