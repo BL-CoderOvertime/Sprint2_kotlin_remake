@@ -11,7 +11,8 @@ import java.util.ArrayList
 class MainActivity : AppCompatActivity() {
     internal var shoppingItems: ArrayList<ShoppingItem> = ArrayList()
     companion object{
-        var shoppingList: ArrayList<String> = ArrayList()
+       // var shoppingList: ArrayList<String> = ArrayList()
+        var shoppingList = mutableListOf<String>()
         const val NOTIFICATION_ID = 22
     }
 
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         val manager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         shoppingListLayout.layoutManager = manager
         shoppingListLayout.adapter = adapter
-
         for (i in 0 until ShoppingItemConstants.ICON_IDS.size) {
             shoppingItems.add(ShoppingItem(ShoppingItemConstants.ITEM_NAMES_RAW[i], ShoppingItemConstants.ICON_IDS[i], 1))
 

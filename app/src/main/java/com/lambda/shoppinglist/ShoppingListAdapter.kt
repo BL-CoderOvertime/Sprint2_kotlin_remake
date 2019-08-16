@@ -1,11 +1,10 @@
 package com.lambda.shoppinglist
 
-import android.provider.ContactsContract
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.content.ContextCompat
@@ -46,8 +45,10 @@ class ShoppingListAdapter (val data: ArrayList<ShoppingItem>) :
             } else if (it.tag != "off") {
                 it.tag = "off"
                 holder.itemView.setBackgroundColor(ContextCompat.getColor(it.context, R.color.colorWhite))
-                   MainActivity.shoppingList.removeAt(data[position].itemIndex-1)
-                }
+                if( MainActivity.shoppingList.contains(holder.itemName.text.toString()))
+                    MainActivity.shoppingList.remove(holder.itemName.text.toString())
+            }
+
 
 
             }

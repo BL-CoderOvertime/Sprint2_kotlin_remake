@@ -11,7 +11,7 @@ import com.lambda.shoppinglist.MainActivity
 
 object NotificationGenerator {
     fun orderNotification(context: Context) {
-      //  val contentIntent = Intent(context, MainActivity::class.java)
+
 
 
         val channelId = "${context.packageName}.orderNotification"
