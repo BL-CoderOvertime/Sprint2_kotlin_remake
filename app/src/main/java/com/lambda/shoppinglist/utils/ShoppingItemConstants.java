@@ -1,4 +1,6 @@
-package com.lambda.shoppinglist;
+package com.lambda.shoppinglist.utils;
+
+import com.lambda.shoppinglist.R;
 
 public class ShoppingItemConstants {
     public static final int[] ICON_IDS = new int[]{
